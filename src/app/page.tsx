@@ -1,19 +1,17 @@
 'use client'
 import React from 'react'
-import Header from './components/header' // Import the Header component
-import UserDetailsSidebar from './components/userDetailsSidebar' // Import the UserDetailsSidebar component
-import SearchPanel from './components/searchPanel' // Import the new JobSearchContainer component
-import JobCard from './components/jobCard' // Import the new JobCard component
+import Header from './components/header'
+import UserDetailsSidebar from './components/userDetailsSidebar'
+import SearchPanel from './components/searchPanel'
+import JobCard from './components/jobCard'
 
 const Page = () => {
-  // Options for the location dropdown
   const locationOptions = [
     { value: 'new-york', label: 'New York' },
     { value: 'los-angeles', label: 'Los Angeles' },
     { value: 'chicago', label: 'Chicago' },
   ]
 
-  // Options for the job type dropdown
   const jobTypeOptions = [
     { value: 'full-time', label: 'Full-Time' },
     { value: 'part-time', label: 'Part-Time' },
@@ -21,9 +19,9 @@ const Page = () => {
 
   return (
     <div className='bg-background min-h-screen'>
-      <Header /> {/* Keep the Header component */}
-      <div className='flex'>
-        <UserDetailsSidebar /> {/* Use the UserDetailsSidebar component */}
+      <Header />
+      <div className='flex max-w-[2000px] mx-auto overflow-x-hidden'>
+        <UserDetailsSidebar />
         <div className='flex-grow ml-8 mt-8 mr-8'>
           <h2 className='text-heading font-subHeading'>
             Find your Dream Job, <span className='text-primary'>Albert!</span>
@@ -65,7 +63,7 @@ const Page = () => {
           </div>
 
           {/* Cards Section */}
-          <div className='flex flex-wrap justify-start mt-4'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-4'>
             {Array.from({ length: 5 }).map((_, index) => (
               <JobCard
                 key={index}
@@ -91,7 +89,7 @@ const Page = () => {
           </div>
 
           {/* Cards Section */}
-          <div className='flex flex-wrap justify-start mt-4'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-4'>
             {Array.from({ length: 5 }).map((_, index) => (
               <JobCard
                 key={index}
@@ -102,7 +100,7 @@ const Page = () => {
                 remote={true}
                 time={'1 day ago'}
                 numberOfApplicants={22}
-                imageSrc='/images/ms-team.png'
+                imageSrc='/images/ms-teams.webp'
               />
             ))}
           </div>

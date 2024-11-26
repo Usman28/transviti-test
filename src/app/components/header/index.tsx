@@ -24,7 +24,7 @@ const Header = () => {
           className='mr-4'
         />
         <div className='flex-grow'>
-          <nav className='flex space-x-8 ml-10'>
+          <nav className='flex space-x-8'>
             {navItems.map((item) => (
               <a
                 key={item.name}

@@ -26,9 +26,8 @@ const JobCard: React.FC<JobCardProps> = ({
 }) => {
   return (
     <div
-      className='bg-white border rounded shadow-md m-2'
+      className='bg-white border rounded shadow-md w-full'
       style={{
-        width: 'calc(20% - 16px)',
         height: '180px',
         borderRadius: '10px',
         display: 'flex',

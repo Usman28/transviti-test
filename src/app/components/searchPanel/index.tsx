@@ -47,12 +47,12 @@ const SearchPanel: React.FC<SearchPanelProps> = ({
   }
 
   return (
-    <div className='bg-white rounded-[10px] h-[80px] w-[calc(100%-1rem)] flex items-center p-2 mt-4'>
+    <div className='bg-white rounded-[10px] h-auto min-h-[80px] w-full flex flex-wrap items-center p-2 mt-4 gap-2'>
       {/* Job Title Input */}
       <input
         type='text'
         placeholder='Job Title, Company, or Keywords'
-        className='border-none text-body font-primary text-primaryText w-[50%] p-2 placeholder:text-[#585D6E] focus:outline-none focus:ring-0'
+        className='flex-1 min-w-[200px] border-none text-body font-primary text-primaryText p-2 placeholder:text-[#585D6E] focus:outline-none focus:ring-0'
       />
 
       {/* Separator */}
