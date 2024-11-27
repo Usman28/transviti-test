@@ -1,16 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { FaChevronDown } from 'react-icons/fa'
 
 const UserDetailsSidebar = () => {
+  const [isCalendarExpanded, setIsCalendarExpanded] = useState(false)
+
   return (
     <div className='flex flex-col items-start ml-[50px] mt-8'>
-      {' '}
+      {/* First card */}
       <div className='flex items-center mb-4'>
-        {' '}
-        {/* First card */}
         <div className='bg-white w-[350px] h-[250px] rounded-[10px] shadow-md flex flex-col'>
-          {' '}
           <Image
             src='/images/user-profile-cover.png'
             alt='User Profile Cover'
@@ -41,6 +40,7 @@ const UserDetailsSidebar = () => {
           </div>
         </div>
       </div>
+
       {/* Second Card */}
       <div className='bg-white w-[350px] h-[140px] rounded-[10px] shadow-md mb-4 flex flex-col p-4'>
         <div className='flex justify-between mt-1.5'>
@@ -52,7 +52,7 @@ const UserDetailsSidebar = () => {
         <hr
           className='my-2'
           style={{ borderColor: '#E9ECEF', borderWidth: '1px' }}
-        />{' '}
+        />
         <div className='flex justify-between'>
           <span className='text-body font-primary text-secondaryText'>
             Resume Viewers
@@ -62,7 +62,7 @@ const UserDetailsSidebar = () => {
         <hr
           className='my-2'
           style={{ borderColor: '#E9ECEF', borderWidth: '1px' }}
-        />{' '}
+        />
         <div className='flex justify-between'>
           <span className='text-body font-primary text-secondaryText'>
             My Jobs
@@ -70,17 +70,63 @@ const UserDetailsSidebar = () => {
           <span className='text-body font-primary text-primary'>88</span>
         </div>
       </div>
-      {/* Third Card */}
-      <div className='bg-white w-[350px] rounded-[10px] shadow-md p-3 mb-4 flex justify-between items-center'>
-        <div>
-          <h3 className='text-[16px] font-subHeading text-secondaryText'>
-            My Calendar
-          </h3>
-          <p className='text-body font-primary text-menuText'>
-            Upcoming Interviews
-          </p>
+
+      {/* Third Card with expansion */}
+      <div className='w-[350px]'>
+        <div
+          onClick={() => setIsCalendarExpanded(!isCalendarExpanded)}
+          className='bg-white rounded-t-[10px] shadow-md p-3 flex justify-between items-center cursor-pointer'
+        >
+          <div>
+            <h3 className='text-[16px] font-subHeading text-secondaryText'>
+              My Calendar
+            </h3>
+            <p className='text-body font-primary text-menuText'>
+              Upcoming Interviews
+            </p>
+          </div>
+          <FaChevronDown
+            className={`text-secondaryText transition-transform duration-300 ${
+              isCalendarExpanded ? 'rotate-180' : ''
+            }`}
+          />
         </div>
-        <FaChevronDown className='text-secondaryText' />
+
+        {/* Expanded Content */}
+        <div
+          className={`bg-white rounded-b-[10px] shadow-md overflow-hidden transition-all duration-300 ease-in-out ${
+            isCalendarExpanded ? 'max-h-[300px] p-4' : 'max-h-0'
+          }`}
+        >
+          <div className='space-y-3'>
+            <div className='flex justify-between items-center'>
+              <div>
+                <h4 className='text-[14px] font-subHeading text-primaryText'>
+                  Product Designer Interview
+                </h4>
+                <p className='text-[12px] font-primary text-secondaryText'>
+                  Google Inc.
+                </p>
+              </div>
+              <span className='text-[12px] font-primary text-primary'>
+                Today, 4:00 PM
+              </span>
+            </div>
+            <div className='flex justify-between items-center'>
+              <div>
+                <h4 className='text-[14px] font-subHeading text-primaryText'>
+                  UI/UX Designer Interview
+                </h4>
+                <p className='text-[12px] font-primary text-secondaryText'>
+                  Apple Inc.
+                </p>
+              </div>
+              <span className='text-[12px] font-primary text-primary'>
+                Tomorrow, 11:00 AM
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

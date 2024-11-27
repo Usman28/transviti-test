@@ -23,6 +23,7 @@ const SearchPanel: React.FC<SearchPanelProps> = ({
       fontSize: '14px',
       color: '#585D6E',
       fontWeight: 500,
+      minHeight: '40px',
     }),
     singleValue: (provided: any) => ({
       ...provided,
@@ -47,46 +48,46 @@ const SearchPanel: React.FC<SearchPanelProps> = ({
   }
 
   return (
-    <div className='bg-white rounded-[10px] h-auto min-h-[80px] w-full flex flex-wrap items-center p-2 mt-4 gap-2'>
-      {/* Job Title Input */}
-      <input
-        type='text'
-        placeholder='Job Title, Company, or Keywords'
-        className='flex-1 min-w-[200px] border-none text-body font-primary text-primaryText p-2 placeholder:text-[#585D6E] focus:outline-none focus:ring-0'
-      />
+    <div className='bg-white rounded-[10px] w-full p-4 mt-4'>
+      <div className='flex flex-col [@media(min-width:1280px)]:flex-row items-stretch gap-4'>
+        {/* Search Input */}
+        <div className='flex-1 min-w-0'>
+          <input
+            type='text'
+            placeholder='Job Title, Company, or Keywords'
+            className='w-full border-none text-body font-primary text-primaryText p-2 placeholder:text-[#585D6E] focus:outline-none focus:ring-0'
+          />
+        </div>
 
-      {/* Separator */}
-      <span className='mx-2 text-[#E9ECEF]'>|</span>
+        {/* Filters and Button Container */}
+        <div className='flex flex-col [@media(min-width:1280px)]:flex-row gap-4'>
+          {/* Location Select */}
+          <div className='w-full [@media(min-width:1280px)]:w-[180px]'>
+            <Select
+              options={locationOptions}
+              classNamePrefix='react-select'
+              placeholder='Select location'
+              styles={customStyles}
+            />
+          </div>
 
-      {/* Location Dropdown using react-select */}
-      <Select
-        options={locationOptions}
-        className='w-[20%] mx-2'
-        classNamePrefix='react-select'
-        placeholder='Select location'
-        styles={customStyles} // Apply custom styles
-      />
+          {/* Job Type Select */}
+          <div className='w-full [@media(min-width:1280px)]:w-[180px]'>
+            <Select
+              options={jobTypeOptions}
+              classNamePrefix='react-select'
+              placeholder='Job Type'
+              styles={customStyles}
+            />
+          </div>
 
-      {/* Separator */}
-      <span className='mx-2 text-[#E9ECEF]'>|</span>
-
-      {/* Job Type Dropdown using react-select */}
-      <Select
-        options={jobTypeOptions}
-        className='w-[20%]'
-        classNamePrefix='react-select'
-        placeholder='Job Type'
-        styles={customStyles} // Apply custom styles
-      />
-
-      {/* Separator */}
-      <span className='mx-2 text-[#E9ECEF]'>|</span>
-
-      {/* Search Button */}
-      <button className='bg-primary text-white text-[14px] font-primary h-[40px] flex items-center justify-center p-2 ml-2 w-[15%] rounded-[10px] mr-2'>
-        <FaSearch className='mr-2' />
-        Search
-      </button>
+          {/* Search Button */}
+          <button className='w-full [@media(min-width:1280px)]:w-auto bg-primary text-white text-[14px] font-primary h-[40px] flex items-center justify-center px-6 rounded-[10px] hover:bg-primary/90 transition-colors duration-200 whitespace-nowrap'>
+            <FaSearch className='mr-2' />
+            Search
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
