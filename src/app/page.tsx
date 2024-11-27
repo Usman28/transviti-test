@@ -121,7 +121,7 @@ const Page = () => {
                   key={index}
                   initial='hidden'
                   animate='visible'
-                  variants={fadeIn}
+                  variants={slideInUp}
                   transition={{ duration: 0.5 }}
                 >
                   <JobCard
